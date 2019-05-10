@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Board.Models.Answer>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<hr />
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+                @Html.DisplayFor(modelItem => item.Body)
+            </div>
+            <div class="col-md-2">
+                by you
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(modelItem => item.Date)
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info btn-default" })
+            </div>
+        </div>
+        <hr />
+    }
+</table>

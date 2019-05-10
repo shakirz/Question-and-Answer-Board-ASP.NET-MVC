@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Board.Models.QuestionViewModel>
+
+@{
+    ViewBag.Title = "Categorized";
+}
+
+    @foreach (var item in Model)
+    {
+        <div class="row ">
+            <div class="col-md-1">
+                <span class="numberbg"> @Html.DisplayFor(modelItem => item.VoteCount) </span>  Votes
+            </div>
+            <div class="col-md-1">
+                <span class="numberbg">@Html.DisplayFor(modelItem => item.AnswerCount) </span>  Answers
+            </div>
+            <div class="col-md-1">
+                <span class="numberbg"> @Html.DisplayFor(modelItem => item.ViewrCount) </span> Viewers
+            </div>
+            <div class="col-md-6">
+
+                @Html.ActionLink(item.Name, "Index", "Answer", new { id = item.Id }, null)
+                <br />
+                <span class="categorybg">  @Html.DisplayFor(modelItem => item.Category) </span>
+                @*@Html.DisplayFor(modelItem => item.CategoryId) change to category name*@
+                @*@Html.Action("GetCategory", "QuestionController",  item.Id ))*@
+            </div>
+            <div class="col-md-1">
+                by Test
+            </div>
+            <div class="col-md-2">
+                on @Html.DisplayFor(modelItem => item.Date)
+            </div>
+        </div>
+        <hr />
+    }

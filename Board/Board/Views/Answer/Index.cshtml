@@ -1,0 +1,46 @@
+﻿@model Board.Models.Question
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        <h2>@Html.DisplayFor(model => model.Name)</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <span class="numberbg"> @Html.DisplayFor(model => model.VoteCount) </span> @Html.DisplayNameFor(model => model.VoteCount)
+</div>
+    <div class="col-md-2">
+        <span class="categorybg">@Html.DisplayFor(model => model.CategoryId) </span>
+</div>
+    <div class="col-md-2">
+        <span class="question-author">by you</span>
+    </div>
+    <div class="col-md-2">
+        <span class="question-date">by @Html.DisplayFor(model => model.Date)</span>
+    </div>
+    <div class="col-md-2">
+        <span class="viewsbg">@Html.DisplayFor(model => model.ViewrCount) </span> @Html.DisplayNameFor(model => model.ViewrCount)
+    </div>
+</div>
+
+@Html.Partial("_Answers", @Model.Answers)
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        @Html.ActionLink("Add answer", "Create", new { questionId = Model.Id, date = DateTime.Now }, new { @class = "btn  btn-primary btn-default" })
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Board.Models.Question>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="jumbotron">
+    <h1>Learn, Share, Build!</h1>
+    <p class="lead">Each month, over 50 million developers come to Stack Overwlow to learn, share their knowledge, and build their careers.</p>
+    Join the world's largest developer community.
+
+</div>
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <span class="numberbg"> @Html.DisplayFor(modelItem => item.VoteCount) </span>  @Html.DisplayNameFor(model => model.VoteCount)
+            </td>
+            <td>
+                <span class="numberbg"> @Html.DisplayFor(modelItem => item.AnswerCount) </span>   @Html.DisplayNameFor(model => model.AnswerCount)
+            </td>
+            <td>
+                <span class="numberbg"> @Html.DisplayFor(modelItem => item.ViewrCount) </span>   @Html.DisplayNameFor(model => model.ViewrCount)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Name)*@
+                @Html.ActionLink(item.Name, "Index", "Answer", new { id = item.Id }, null)
+                <br />
+                @*@Html.DisplayFor(modelItem => item.CategoryId) change to category name*@
+                @*@Html.Action("GetCategory", "QuestionController",  item.Id ))*@
+            </td>
+            <td>
+                by Test
+            </td>
+            <td>
+                on @Html.DisplayFor(modelItem => item.Date)
+            </td>
+        </tr>
+    }
+
+</table>

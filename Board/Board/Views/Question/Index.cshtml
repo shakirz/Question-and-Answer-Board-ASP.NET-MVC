@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Board.Models.Question>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@foreach (var item in Model)
+{
+    @*<div class="row">
+           <div class="col-md-2">
+               <span class="numberbg"> @Html.DisplayFor(modelItem => item.VoteCount) </span> @Html.DisplayNameFor(model => model.VoteCount)
+            </div>
+           <div class="col-md-2">
+               <span class="numberbg">@Html.DisplayFor(modelItem => item.AnswerCount) </span> @Html.DisplayNameFor(model => model.AnswerCount)
+           </div>
+           <div class="col-md-2">
+               <span class="numberbg"> @Html.DisplayFor(modelItem => item.ViewrCount) @Html.DisplayNameFor(model => model.ViewrCount)
+            </div>
+           <div class="col-md-2">
+               @Html.DisplayFor(modelItem => item.CategoryId) @Html.DisplayNameFor(model => model.CategoryId)
+            </div>
+           <div class="col-md-2">
+
+               @Html.ActionLink(item.Name, "Index", "Answer", new { id = item.Id }, null)
+               <br />
+           </div>
+           <hr />
+        </div>*@
+    <div class="row ">
+        <div class="col-md-1">
+            <span class="numberbg"> @Html.DisplayFor(modelItem => item.VoteCount) </span>  Votes
+        </div>
+        <div class="col-md-1">
+            <span class="numberbg">@Html.DisplayFor(modelItem => item.AnswerCount) </span>  Answers
+        </div>
+        <div class="col-md-1">
+            <span class="numberbg"> @Html.DisplayFor(modelItem => item.ViewrCount) </span> Viewers
+        </div>
+        <div class="col-md-6">
+
+            @Html.ActionLink(item.Name, "Index", "Answer", new { id = item.Id }, null)
+            <br />
+            <span class="categorybg">  @Html.DisplayFor(modelItem => item.CategoryId) </span>
+            @*@Html.DisplayFor(modelItem => item.CategoryId) change to category name*@
+            @*@Html.Action("GetCategory", "QuestionController",  item.Id ))*@
+        </div>
+        <div class="col-md-1">
+            by Test
+        </div>
+        <div class="col-md-2">
+            on @Html.DisplayFor(modelItem => item.Date)
+        </div>
+    </div>
+    <hr />
+}
+<p>
+    @Html.ActionLink("Ask a question", "Create", null, new { @class = "btn btn-info btn-default" })
+</p>
